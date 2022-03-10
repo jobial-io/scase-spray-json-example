@@ -13,7 +13,7 @@
 name := "scase-spray-json-example"
 
 ThisBuild / organization := "io.jobial"
-ThisBuild / scalaVersion := "2.12.13"
+ThisBuild / scalaVersion := "2.13.6"
 ThisBuild / crossScalaVersions := Seq("2.11.12", "2.12.13", "2.13.6")
 ThisBuild / version := "0.4.0"
 ThisBuild / scalacOptions += "-target:jvm-1.8"
@@ -38,6 +38,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val ScaseVersion = "0.4.0"
+lazy val SclapVersion = "1.1.7"
 
 lazy val root: Project = project
   .in(file("."))
@@ -45,6 +46,7 @@ lazy val root: Project = project
   .settings(
     libraryDependencies ++= Seq(
       "io.jobial" %% "scase-pulsar" % ScaseVersion % "compile->compile;test->test" exclude("commons-logging", "commons-logging-api"),
-      "io.jobial" %% "scase-spray-json" % ScaseVersion exclude("commons-logging", "commons-logging-api")
+      "io.jobial" %% "scase-spray-json" % ScaseVersion exclude("commons-logging", "commons-logging-api"),
+      "io.jobial" %% "sclap-zio" % SclapVersion
     )
   )
