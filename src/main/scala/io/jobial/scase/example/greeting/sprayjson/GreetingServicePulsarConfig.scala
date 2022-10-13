@@ -15,7 +15,8 @@ package io.jobial.scase.example.greeting.sprayjson
 
 import io.circe.generic.auto._
 import io.jobial.scase.marshalling.sprayjson._
-import io.jobial.scase.pulsar.{PulsarContext, PulsarRequestResponseServiceConfiguration}
+import io.jobial.scase.pulsar.PulsarContext
+import io.jobial.scase.pulsar.PulsarServiceConfiguration.requestResponse
 import spray.json._
 
 /**
@@ -27,6 +28,5 @@ trait GreetingServicePulsarConfig extends DefaultJsonProtocol with CirceSprayJso
 
   implicit val context = PulsarContext()
 
-  val greetingServiceConfig =
-    PulsarRequestResponseServiceConfiguration[GreetingRequest[_ <: GreetingResponse], GreetingResponse]("greeting")
+  val greetingServiceConfig = requestResponse[GreetingRequest[_ <: GreetingResponse], GreetingResponse]("greeting")
 }
